@@ -7,6 +7,7 @@ import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/services/notification_services.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/home';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

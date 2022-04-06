@@ -26,8 +26,9 @@ class MyApp extends StatelessWidget {
         routes: {
           // LoginScreen.routeName: (ctx) => LoginScreen(),
           // SignUpScreen.routeName:(ctx) => SignUpScreen(),
-          // MainScreen.routeName:(ctx) => MainScreen(),
-          AddReminderPage.routeName:(ctx) => AddReminderPage(),
+          AddReminderPage.routeName:(ctx) => const AddReminderPage(),
+          MainScreen.routeName:(ctx) =>const MainScreen(),
+          AddReminderPage.routeName:(ctx) => const AddReminderPage(),
         });
   }
 }

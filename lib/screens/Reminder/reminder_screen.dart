@@ -75,14 +75,14 @@ class _ReminderScreenState extends State<ReminderScreen> {
                 MyButton(
                   label: "Add Reminder",
                   onTap: () async {
-                    
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              const AddReminderPage(),
-                        ),
-                        (Route<dynamic> route) => false);
+                      Navigator.pushNamed(context,AddReminderPage.routeName);
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute<void>(
+                    //       builder: (BuildContext context) =>
+                    //           const AddReminderPage(),
+                    //     ),
+                    //     (Route<dynamic> route) => false);
                     _reminderController.getReminders();
                   },
                   icon: Icons.add,

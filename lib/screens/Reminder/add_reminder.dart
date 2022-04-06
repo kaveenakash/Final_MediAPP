@@ -38,12 +38,13 @@ class _AddReminderPageState extends State<AddReminderPage> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const ReminderScreen(),
-                ),
-                (Route<dynamic> route) => false);
+            Navigator.pop(context);
+            // Navigator.pushAndRemoveUntil(
+            //     context,
+            //     MaterialPageRoute<void>(
+            //       builder: (BuildContext context) => const ReminderScreen(),
+            //     ),
+            //     (Route<dynamic> route) => false);
           },
           icon: Icon(
             Icons.arrow_back,
@@ -187,12 +188,13 @@ class _AddReminderPageState extends State<AddReminderPage> {
   _validateDate() {
     if (_titleController.text.isNotEmpty && _noteController.text.isNotEmpty) {
       _addRemindToDb();
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => const ReminderScreen(),
-          ),
-          (Route<dynamic> route) => false);
+      Navigator.pop(context);
+      // Navigator.pushAndRemoveUntil(
+      //     context,
+      //     MaterialPageRoute<void>(
+      //       builder: (BuildContext context) => const ReminderScreen(),
+      //     ),
+      //     (Route<dynamic> route) => false);
     } else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
       // Get.snackbar("Required", "All fields are required!",
       //     snackPosition: SnackPosition.BOTTOM,
@@ -245,7 +247,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
     );
   }
 
-  _addRemindToDb() async{
+  _addRemindToDb() async {
     int value = await _reminderController.AddReminder(
         reminder: Reminder(
       note: _noteController.text,
