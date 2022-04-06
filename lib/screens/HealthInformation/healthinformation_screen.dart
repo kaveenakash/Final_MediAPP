@@ -70,7 +70,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
                 Container(
                   margin: EdgeInsets.only(left: 15,right: 15),
                   padding: EdgeInsets.only(left:10),
-                  height: 90,
+                  height: 100,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(13),
