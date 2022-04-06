@@ -1,12 +1,69 @@
-import 'package:flutter/material.dart';
 
+
+// import 'package:file_manager/app/shared_components/custom_button.dart';
+// import 'package:file_manager/app/shared_components/file_list_button.dart';
+// import 'package:file_manager/app/shared_components/header_text.dart';
+// import 'package:file_manager/app/shared_components/search_button.dart';
+// import 'package:file_manager/app/utils/helpers/app_helpers.dart';
+// import 'package:filesize/filesize.dart';
+import 'package:flutter/material.dart';
+import 'package:medicine_remainder_app/constants.dart';
+import 'package:medicine_remainder_app/screens/HealthInformation/category.dart';
+// import 'package:percent_indicator/circular_percent_indicator.dart';
+
+// // binding
+// part '../../bindings/home_binding.dart';
+
+// // controller
+// part '../../controllers/home_controller.dart';
+
+// // model
+// part '../../models/usage.dart';
+// part '../../models/user.dart';
+
+// component
+// part '../components/category.dart';
+// part '../components/header.dart';
+// part '../components/recent.dart';
+// part '../components/storage_chart.dart';
+import './header.dart';
 class HealthInformationScreen extends StatelessWidget {
-  const HealthInformationScreen({ Key? key }) : super(key: key);
+  const HealthInformationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:Center(child: Text("Health Information Screen"),)
+    return Scaffold(
+        backgroundColor: kPrimary,
+      body: SafeArea(
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverFillRemaining(
+              child: Column(children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: TopBar(),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(20.0),
+                //   child: _StorageChart(usage: controller.usage),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Category(),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(20.0),
+                //   child: _Recent(
+                //     // data: controller.recent,
+                //   ),     
+                // ),
+              ]),
+              hasScrollBody: false,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

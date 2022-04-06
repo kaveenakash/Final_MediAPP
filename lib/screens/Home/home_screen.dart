@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:medicine_remainder_app/components/category_card.dart';
-import 'package:medicine_remainder_app/models/Product.dart';
 import 'package:medicine_remainder_app/constants.dart';
-import 'package:medicine_remainder_app/services/notification_services.dart';
+// import 'package:medicine_remainder_app/services/notification_services.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -13,24 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Product> products = [
-    Product('Surgical Mask', "It is designed to prevent infections.",
-        'assets/images/mask.png', 160),
-    Product(
-        'Black n95 Mask',
-        "It is n95 mask designed to prevent infections in patients.",
-        'assets/images/black_mask.png',
-        250),
-    Product('Eye Patch', "It is designed to prevent infections in eyes.",
-        'assets/images/eyepatch.png', 300),
-  ];
+ 
 
-  var notifyHelper;
+  // var notifyHelper;
   @override
   void initState(){
     super.initState();
-    notifyHelper=NotifyHelper();
-    notifyHelper.requestIOSPermissions();
+    // notifyHelper=NotifyHelper();
+    // notifyHelper.requestIOSPermissions();
     
 
   }
@@ -89,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialStateProperty.all<Color>(kPrimaryColor),
                   ),
                   onPressed: () {
-                    notifyHelper.displayNotification(title:"dadasd",body:"dadas");
+                    // notifyHelper.displayNotification(title:"dadasd",body:"dadas");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
