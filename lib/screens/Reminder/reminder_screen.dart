@@ -7,13 +7,10 @@ import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/models/reminder.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
-import 'package:medicine_remainder_app/services/notification_services.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
-import 'package:medicine_remainder_app/widgets/button_widget.dart';
 import 'package:medicine_remainder_app/widgets/reminder_tile.dart';
 
 import '../../controllers/reminder_controller.dart';
-import '../../misc/colors.dart';
 
 class ReminderScreen extends StatefulWidget {
   const ReminderScreen({Key? key}) : super(key: key);

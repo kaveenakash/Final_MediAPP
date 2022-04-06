@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicine_remainder_app/db/db_helper.dart';
+import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
 import 'package:medicine_remainder_app/screens/main_screen.dart';
 
@@ -26,9 +27,10 @@ class MyApp extends StatelessWidget {
         routes: {
           // LoginScreen.routeName: (ctx) => LoginScreen(),
           // SignUpScreen.routeName:(ctx) => SignUpScreen(),
-          AddReminderPage.routeName:(ctx) => const AddReminderPage(),
           MainScreen.routeName:(ctx) =>const MainScreen(),
           AddReminderPage.routeName:(ctx) => const AddReminderPage(),
+          AddUserPage.routeName:(ctx) => const AddUserPage()
+
         });
   }
 }

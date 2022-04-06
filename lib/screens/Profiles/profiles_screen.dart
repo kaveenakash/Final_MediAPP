@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/models/reminder.dart';
+import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
 import 'package:medicine_remainder_app/services/notification_services.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
@@ -76,14 +77,14 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                 MyButton(
                   label: "Add Users",
                   onTap: () async {
-                    
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              const AddReminderPage(),
-                        ),
-                        (Route<dynamic> route) => false);
+                     Navigator.pushNamed(context,AddUserPage.routeName);
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute<void>(
+                    //       builder: (BuildContext context) =>
+                    //           const AddReminderPage(),
+                    //     ),
+                    //     (Route<dynamic> route) => false);
                     _reminderController.getReminders();
                   },
                   icon: Icons.add,
