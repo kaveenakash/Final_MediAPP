@@ -30,7 +30,7 @@ class DBHelper {
 
   static void _createDb(Database db) async{
     print("creating a new one");
-    db.execute('CREATE TABLE $_userTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING,date STRING, gender INTEGER, color INTEGER)');
+    db.execute('CREATE TABLE $_userTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING,date STRING, gender STRING, color INTEGER)');
       // db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER ,userId STRING ,FOREIGN KEY(userId) REFERENCES $_userTableName(id)');
     db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER,userId STRING ,FOREIGN KEY(userId) REFERENCES $_userTableName(id))');
   }

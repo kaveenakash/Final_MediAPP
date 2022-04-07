@@ -133,9 +133,18 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
               ),
               itemBuilder: (context,index) {
                 User user = _userController.userList[index];
+                String? svg;
+                print(user.toJson());
+                if(user.gender == "Male"){
+                  svg = "assets/icons/male.svg";
+                }else if(user.gender == "Female"){
+                  svg = "assets/icons/female.svg";
+                }else{
+                  svg = "assets/icons/male.svg";
+                }
                 return CategoryCard(
                 title: user.name.toString(),
-                svgSrc: "assets/icons/Hamburger.svg",
+                svgSrc: svg,
                 press: () {},
               );
               }

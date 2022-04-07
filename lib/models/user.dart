@@ -2,10 +2,10 @@ class User{
   int? id;
   String? name;
   String? date;
-  int? gender;
+  String? gender;
   int? color;
 
-  User({this.id,this.name,this.date,this.color});
+  User({this.id,this.name,this.gender,this.date,this.color});
 
   User.fromJson(Map<String,dynamic>json){
 

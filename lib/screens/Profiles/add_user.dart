@@ -87,7 +87,7 @@ class _AddReminderPageState extends State<AddUserPage> {
                 ),
               ),
               MyInputField(
-                title: "Repeat",
+                title: "Gender",
                 hint: _selectedRepeat,
                 widget: DropdownButton(
                   icon: Icon(
@@ -140,6 +140,7 @@ class _AddReminderPageState extends State<AddUserPage> {
   _validateDate() {
     if (_userNameController.text.isNotEmpty) {
       _addUserToDb();
+      Navigator.pop(context);
 
       // Navigator.pushAndRemoveUntil(
       //     context,
@@ -205,8 +206,12 @@ class _AddReminderPageState extends State<AddUserPage> {
           name:_userNameController.text,
       date: DateFormat.yMd().format(_selectedDate),
       color: _selectedColor,
+          gender:_selectedRepeat
     ));
+    _userController.getUsers();
     _showMyDialog(_userNameController.text);
+
+
     print("My id is " + "$value");
   }
   Future<void> _showMyDialog(String name) async {
@@ -229,8 +234,9 @@ class _AddReminderPageState extends State<AddUserPage> {
             TextButton(
               child: const Text('Ok'),
               onPressed: () {
+                _userController.getUsers();
                 Navigator.pop(context);
-                Navigator.pop(context);
+                // Navigator.pop(context);
               },
             ),
           ],
