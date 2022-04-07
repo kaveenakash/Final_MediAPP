@@ -22,18 +22,6 @@ class DBHelper {
         _path,
         version: _version,
           onCreate: (db, version) => _createDb(db),
-        // onCreate: (db, version) {
-        //   print("creating a new one");
-        //   return db.execute(
-        //     "CREATE TABLE $_tableName("
-        //     "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-        //     "title STRING, note TEXT, date STRING, "
-        //     "time STRING, "
-        //     "remind INTEGER, repeat STRING, "
-        //     "color INTEGER, "
-        //     "isCompleted INTEGER)",
-        //   );
-        // },
       );
     } catch (e) {
       print(e);
@@ -48,6 +36,7 @@ class DBHelper {
   }
 
 
+  //reminder CRUD Operations
   static Future<int> insert(Reminder? reminder) async {
     print("insert function called");
     return await _db?.insert(_tableName, reminder!.toJson()) ?? 1;
