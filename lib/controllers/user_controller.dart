@@ -17,10 +17,10 @@ class UserController extends GetxController{
     return await DBHelper.insertUser(user);
   }
 
-  // void getReminders() async{
-  //   List<Map<String, dynamic>> reminders = await DBHelper.query();
-  //   reminderList.assignAll(reminders.map((data) => new Reminder.fromJson(data)).toList());
-  // }
+  void getUsers() async{
+    List<Map<String, dynamic>> users = await DBHelper.getAllUsers();
+    userList.assignAll(users.map((data) => new User.fromJson(data)).toList());
+  }
   //
   // void delete(Reminder reminder){
   //   var val = DBHelper.delete(reminder);

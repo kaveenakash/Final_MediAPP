@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
+import 'package:medicine_remainder_app/controllers/user_controller.dart';
 import 'package:medicine_remainder_app/models/reminder.dart';
 import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
@@ -26,12 +27,12 @@ class ProfilesScreen extends StatefulWidget {
 
 class _ProfilesScreenState extends State<ProfilesScreen> {
   DateTime _selectedDate = DateTime.now();
-  final _reminderController = Get.put(ReminderController());
+  final _userController = Get.put(UserController());
 
   
   @override
   Widget build(BuildContext context) {
-    _reminderController.getReminders();
+    _userController.getUsers();
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
@@ -85,7 +86,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                     //           const AddReminderPage(),
                     //     ),
                     //     (Route<dynamic> route) => false);
-                    _reminderController.getReminders();
+                    _userController.getUsers();
                   },
                   icon: Icons.add,
                   height: 25,
@@ -161,7 +162,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                           _bottomSheetButton(
                               label: "Delete Reminder",
                               onTap: () {
-                                _reminderController.delete(reminder);
+                                // _reminderController.delete(reminder);
                                 Navigator.pop(context);
                               },
                               clr: Colors.red[300]!,
@@ -188,8 +189,8 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                           _bottomSheetButton(
                               label: "Reminder Completed",
                               onTap: () {
-                                _reminderController
-                                    .markRemindCompleted(reminder.id!);
+                                // _reminderController
+                                //     .markRemindCompleted(reminder.id!);
 
                                 Navigator.pop(context);
                               },
@@ -201,7 +202,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                           _bottomSheetButton(
                               label: "Delete Reminder",
                               onTap: () {
-                                _reminderController.delete(reminder);
+                                // _reminderController.delete(reminder);
                                 Navigator.pop(context);
                               },
                               clr: Colors.red[300]!,

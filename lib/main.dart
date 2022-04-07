@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medicine_remainder_app/db/db_helper.dart';
+import 'package:medicine_remainder_app/screens/Login/login_screen.dart';
 import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
+import 'package:medicine_remainder_app/screens/Signup/signup_screen.dart';
+import 'package:medicine_remainder_app/screens/Welcome/welcome_screen.dart';
 import 'package:medicine_remainder_app/screens/main_screen.dart';
 
 Future<void> main() async{
@@ -23,10 +26,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blueGrey,
         ),
         // home: WelcomeScreen(),
-        home: MainScreen(),
+        home: WelcomeScreen(),
         routes: {
-          // LoginScreen.routeName: (ctx) => LoginScreen(),
-          // SignUpScreen.routeName:(ctx) => SignUpScreen(),
+          LoginScreen.routeName: (ctx) => LoginScreen(),
+          SignUpScreen.routeName:(ctx) => SignUpScreen(),
           MainScreen.routeName:(ctx) =>const MainScreen(),
           AddReminderPage.routeName:(ctx) => const AddReminderPage(),
           AddUserPage.routeName:(ctx) => const AddUserPage()

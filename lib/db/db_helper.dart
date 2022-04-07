@@ -17,7 +17,7 @@ class DBHelper {
       return;
     }
     try {
-      String _path = await getDatabasesPath() + "medi.db";
+      String _path = await getDatabasesPath() + "medicare.db";
       _db = await openDatabase(
         _path,
         version: _version,
@@ -40,10 +40,11 @@ class DBHelper {
     }
   }
 
-  static void _createDb(Database db) {
+  static void _createDb(Database db) async{
     print("creating a new one");
     db.execute('CREATE TABLE $_userTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING,date STRING, gender INTEGER, color INTEGER)');
-    db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER )');
+      // db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER ,userId STRING ,FOREIGN KEY(userId) REFERENCES $_userTableName(id)');
+    db.execute('CREATE TABLE $_tableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER,userId STRING ,FOREIGN KEY(userId) REFERENCES $_userTableName(id))');
   }
 
 
@@ -78,5 +79,10 @@ class DBHelper {
     print("insert user function called");
     return await _db?.insert(_userTableName, user!.toJson()) ?? 1;
     // return 1;
+  }
+
+  static Future<List<Map<String, dynamic>>> getAllUsers() async {
+    print("get All Users function called");
+    return await _db!.query(_userTableName);
   }
 }
