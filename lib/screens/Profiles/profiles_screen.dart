@@ -10,6 +10,7 @@ import 'package:medicine_remainder_app/controllers/user_controller.dart';
 import 'package:medicine_remainder_app/models/reminder.dart';
 import 'package:medicine_remainder_app/models/user.dart';
 import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
+import 'package:medicine_remainder_app/screens/Profiles/edit_user.dart';
 import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
 import 'package:medicine_remainder_app/services/notification_services.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
@@ -145,7 +146,13 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                 return CategoryCard(
                 title: user.name.toString(),
                 svgSrc: svg,
-                press: () {},
+                press: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditUser(user:user),
+                  ),
+                );},
               );
               }
             )
