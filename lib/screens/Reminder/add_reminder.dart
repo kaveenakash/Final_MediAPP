@@ -259,6 +259,7 @@ class _AddReminderPageState extends State<AddReminderPage> {
       color: _selectedColor,
       isCompleted: 0,
     ));
+    _reminderController.getReminders();
     print("My id is " + "$value");
   }
 

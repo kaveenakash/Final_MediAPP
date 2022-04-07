@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
-import 'package:medicine_remainder_app/controllers/reminder_controller.dart';
+import 'package:medicine_remainder_app/controllers/user_controller.dart';
 import 'package:medicine_remainder_app/models/reminder.dart';
+import 'package:medicine_remainder_app/models/user.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
 
@@ -17,8 +18,8 @@ class AddUserPage extends StatefulWidget {
 }
 
 class _AddReminderPageState extends State<AddUserPage> {
-  final ReminderController _reminderController = Get.put(ReminderController());
-  final TextEditingController _titleController = TextEditingController();
+  final UserController _userController = Get.put(UserController());
+  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
@@ -69,7 +70,7 @@ class _AddReminderPageState extends State<AddUserPage> {
               MyInputField(
                 title: "User Name",
                 hint: "Enter user name",
-                controller: _titleController,
+                controller: _userNameController,
               ),
               MyInputField(
                 title: "Birth Date",
@@ -137,16 +138,16 @@ class _AddReminderPageState extends State<AddUserPage> {
   }
 
   _validateDate() {
-    if (_titleController.text.isNotEmpty && _noteController.text.isNotEmpty) {
-      _addRemindToDb();
-      Navigator.pop(context);
+    if (_userNameController.text.isNotEmpty) {
+      _addUserToDb();
+
       // Navigator.pushAndRemoveUntil(
       //     context,
       //     MaterialPageRoute<void>(
       //       builder: (BuildContext context) => const ReminderScreen(),
       //     ),
       //     (Route<dynamic> route) => false);
-    } else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
+    } else if (_userNameController.text.isEmpty) {
       // Get.snackbar("Required", "All fields are required!",
       //     snackPosition: SnackPosition.BOTTOM,
       //     backgroundColor: Colors.white,
@@ -198,19 +199,44 @@ class _AddReminderPageState extends State<AddUserPage> {
     );
   }
 
-  _addRemindToDb() async {
-    int value = await _reminderController.AddReminder(
-        reminder: Reminder(
-      note: _noteController.text,
-      title: _titleController.text,
+  _addUserToDb() async {
+    int value = await _userController.AddUser(
+        user: User(
+          name:_userNameController.text,
       date: DateFormat.yMd().format(_selectedDate),
-      time: _time,
-      remind: _selectedRemind,
-      repeat: _selectedRepeat,
       color: _selectedColor,
-      isCompleted: 0,
     ));
+    _showMyDialog(_userNameController.text);
     print("My id is " + "$value");
+  }
+  Future<void> _showMyDialog(String name) async {
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('User Added Successfully'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children:  <Widget>[
+                Text('user ${name} created Successfully'),
+                // Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Ok'),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   _colorPallete() {
