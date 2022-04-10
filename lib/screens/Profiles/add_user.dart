@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/controllers/user_controller.dart';
-import 'package:medicine_remainder_app/models/reminder.dart';
 import 'package:medicine_remainder_app/models/user.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
@@ -20,11 +19,9 @@ class AddUserPage extends StatefulWidget {
 class _AddReminderPageState extends State<AddUserPage> {
   final UserController _userController = Get.put(UserController());
   final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _noteController = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
   String _time = DateFormat("hh:mm a").format(DateTime.now()).toString();
-  int _selectedRemind = 5;
   List<int> remindList = [5, 10, 15, 20];
   String _selectedRepeat = "None";
   List<String> repeatList = ["Male","Female"];

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_remainder_app/constants.dart';
+import 'package:medicine_remainder_app/widgets/input_field.dart';
 
 import '../../models/user.dart';
+import '../../widgets/button.dart';
+import '../../widgets/responsive_button.dart';
 
 class EditUser extends StatelessWidget {
   final User user;
@@ -13,6 +17,10 @@ class EditUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final TextEditingController _userNameController = TextEditingController();
+    String _selectedRepeat = "None";
+    List<String> repeatList = ["Male","Female"];
     print(user.toJson());
     String? svg;
     print(user.toJson());
@@ -79,7 +87,55 @@ class EditUser extends StatelessWidget {
 
                   ],
                 )
-              )
+              ),
+              SizedBox(height:5),
+              Text(
+                user.name.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+
+              ),
+              SizedBox(height:25),
+              MyInputField(
+                title: "Name",
+                hint: user.name.toString(),
+                controller: _userNameController,
+              ),
+
+              MyInputField(
+                title: "Gender",
+                hint: user.gender.toString(),
+                widget: DropdownButton(
+                  icon: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.grey,
+                  ),
+                  iconSize: 32,
+                  elevation: 4,
+                  style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey),
+                  ),
+                  underline: Container(height: 0),
+                  items:
+                  repeatList.map<DropdownMenuItem<String>>((String? value) {
+                    return DropdownMenuItem<String>(
+                      child: Text(value!, style: TextStyle(color: Colors.grey)),
+                      value: value,
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+
+                  },
+                ),
+              ),
+
+              SizedBox(height: 45,),
+              MyButton(label:"Save",onTap: () => {},height:45),
+              SizedBox(height: 5,),
+              MyButton(label:"Delete User",onTap: () => {},color: Colors.red,height:45),
             ],
           )
         )

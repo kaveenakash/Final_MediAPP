@@ -6,14 +6,15 @@ class MyButton extends StatelessWidget {
   final IconData? icon;
   final Function() onTap;
   final double? height;
-  const MyButton({Key? key, required this.label, required this.onTap, this.icon,this.height})
+  final Color? color;
+  const MyButton({Key? key, required this.label, required this.onTap, this.icon,this.height,this.color})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(kPrimaryColor)
+        backgroundColor: color != null ? MaterialStateProperty.all<Color>(color!) :MaterialStateProperty.all<Color>(kPrimaryColor)
       ),
       onPressed: onTap,
       child: Row(
