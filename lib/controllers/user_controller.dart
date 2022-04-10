@@ -28,8 +28,8 @@ class UserController extends GetxController{
   //   print(val);
   // }
   //
-  // void markRemindCompleted(int id)async{
-  //   await DBHelper.update(id);
-  //   getReminders();
-  // }
+  void updateUserName(int id)async{
+    await DBHelper.update(id);
+    // getReminders();
+  }
 }

@@ -3,14 +3,24 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
+import 'package:medicine_remainder_app/controllers/user_controller.dart';
 
 import '../../models/user.dart';
 import '../../widgets/button.dart';
 import '../../widgets/responsive_button.dart';
 
-class EditUser extends StatelessWidget {
+
+class EditUser extends StatefulWidget {
   final User user;
   const EditUser({Key? key,required this.user}) : super(key: key);
+
+  @override
+  State<EditUser> createState() => _EditUserState(user:user);
+}
+
+class _EditUserState extends State<EditUser> {
+  final User user;
+   _EditUserState({Key? key,required this.user}) : super();
 
 
 
@@ -31,6 +41,12 @@ class EditUser extends StatelessWidget {
     }else{
       svg = "assets/icons/male.svg";
     }
+
+
+
+
+
+
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
@@ -141,5 +157,9 @@ class EditUser extends StatelessWidget {
         )
       )
     );
+
+
   }
+
+
 }
