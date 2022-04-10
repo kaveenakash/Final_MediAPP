@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medicine_remainder_app/constants.dart';
 
 import '../../models/user.dart';
 
-class EditUser extends StatefulWidget {
-  const EditUser({Key? key,required this.user}) : super(key: key);
+class EditUser extends StatelessWidget {
   final User user;
-  @override
-  State<EditUser> createState() => _EditUserState();
-}
+  const EditUser({Key? key,required this.user}) : super(key: key);
 
-class _EditUserState extends State<EditUser> {
-  get user => this.user;
+
 
 
   @override
   Widget build(BuildContext context) {
-    // print('user $user');
+    print(user.toJson());
+    String? svg;
+    print(user.toJson());
+    if(user.gender == "Male"){
+      svg = "assets/icons/male.svg";
+    }else if(user.gender == "Female"){
+      svg = "assets/icons/female.svg";
+    }else{
+      svg = "assets/icons/male.svg";
+    }
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
@@ -53,6 +59,7 @@ class _EditUserState extends State<EditUser> {
                     Container(
                       width:130,
                       height:130,
+
                       decoration: BoxDecoration(
                         border:Border.all(width:4,color:Colors.white),
                         boxShadow:[
@@ -60,7 +67,16 @@ class _EditUserState extends State<EditUser> {
                         ],
                         shape:BoxShape.circle,
                       ),
-                    )
+                      child: Column(
+                        children: <Widget>[
+                          Spacer(),
+                          SizedBox(child:SvgPicture.asset(svg),height:85,width:85) ,
+                          Spacer(),
+
+                        ],
+                      ),
+                    ),
+
                   ],
                 )
               )

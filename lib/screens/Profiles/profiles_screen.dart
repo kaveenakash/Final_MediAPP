@@ -1,24 +1,17 @@
-import 'package:date_picker_timeline/date_picker_widget.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/controllers/user_controller.dart';
-import 'package:medicine_remainder_app/models/reminder.dart';
 import 'package:medicine_remainder_app/models/user.dart';
 import 'package:medicine_remainder_app/screens/Profiles/add_user.dart';
 import 'package:medicine_remainder_app/screens/Profiles/edit_user.dart';
-import 'package:medicine_remainder_app/screens/Reminder/add_reminder.dart';
-import 'package:medicine_remainder_app/services/notification_services.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
-import 'package:medicine_remainder_app/widgets/button_widget.dart';
-import 'package:medicine_remainder_app/widgets/reminder_tile.dart';
 import 'package:medicine_remainder_app/widgets/category_card.dart';
-// import '../../components/category_card.dart';
-import '../../controllers/reminder_controller.dart';
+
 
 
 class ProfilesScreen extends StatefulWidget {
@@ -29,7 +22,6 @@ class ProfilesScreen extends StatefulWidget {
 }
 
 class _ProfilesScreenState extends State<ProfilesScreen> {
-  DateTime _selectedDate = DateTime.now();
   final _userController = Get.put(UserController());
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
@@ -83,19 +75,12 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                   label: "Add Users",
                   onTap: () async {
                      Navigator.pushNamed(context,AddUserPage.routeName);
-                    // Navigator.pushAndRemoveUntil(
-                    //     context,
-                    //     MaterialPageRoute<void>(
-                    //       builder: (BuildContext context) =>
-                    //           const AddReminderPage(),
-                    //     ),
-                    //     (Route<dynamic> route) => false);
                     _userController.getUsers();
                   },
                   icon: Icons.add,
                   height: 25,
                 )
-                // ResponsiveButton(width:150,isResponsive: true,)
+
               ],
             ),
           ),
