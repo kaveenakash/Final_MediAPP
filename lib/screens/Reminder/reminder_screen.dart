@@ -73,13 +73,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                   label: "Add Reminder",
                   onTap: () async {
                       Navigator.pushNamed(context,AddReminderPage.routeName);
-                    // Navigator.pushAndRemoveUntil(
-                    //     context,
-                    //     MaterialPageRoute<void>(
-                    //       builder: (BuildContext context) =>
-                    //           const AddReminderPage(),
-                    //     ),
-                    //     (Route<dynamic> route) => false);
+
                     _reminderController.getReminders();
                   },
                   icon: Icons.add,
@@ -135,7 +129,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                   itemBuilder: (_, index) {
                     print(_reminderController.reminderList.length);
                     Reminder reminder = _reminderController.reminderList[index];
-                    // print(reminder.toJson());
+                    print(reminder.toJson());
                     if (reminder.repeat == 'Daily') {
                       DateTime date =
                           DateFormat.jm().parse(reminder.time.toString());

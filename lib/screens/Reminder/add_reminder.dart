@@ -189,20 +189,8 @@ class _AddReminderPageState extends State<AddReminderPage> {
     if (_titleController.text.isNotEmpty && _noteController.text.isNotEmpty) {
       _addRemindToDb();
       Navigator.pop(context);
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute<void>(
-      //       builder: (BuildContext context) => const ReminderScreen(),
-      //     ),
-      //     (Route<dynamic> route) => false);
+
     } else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
-      // Get.snackbar("Required", "All fields are required!",
-      //     snackPosition: SnackPosition.BOTTOM,
-      //     backgroundColor: Colors.white,
-      //     colorText:kTextSecondary,
-      //     icon: Icon(Icons.warning_amber_rounded));
-      Get.snackbar("Required", "All fields are required!",
-          icon: Icon(Icons.warning_amber_rounded));
     }
   }
 

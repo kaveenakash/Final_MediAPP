@@ -8,8 +8,10 @@ class Reminder{
   int? color;
   int? remind;
   String? repeat;
+  int? userId;
 
-  Reminder({this.id,this.title,this.note,this.isCompleted,this.date,this.time,this.color,this.remind,this.repeat});
+
+  Reminder({this.id,this.title,this.note,this.isCompleted,this.date,this.time,this.color,this.remind,this.repeat,this.userId});
 
   Reminder.fromJson(Map<String,dynamic>json){
 
@@ -22,6 +24,7 @@ class Reminder{
     color = json["color"];
     remind = json["remind"];
     repeat = json["repeat"];
+    userId = json["userId"];
   }
   Map<String,dynamic>toJson(){
     final Map<String,dynamic> data = new Map<String,dynamic>();
@@ -34,6 +37,7 @@ class Reminder{
     data['color'] = this.color;
     data['remind'] = this.remind;
     data['repeat'] = this.repeat;
+    data['userId'] = this.userId;
     return data;
   }
 
