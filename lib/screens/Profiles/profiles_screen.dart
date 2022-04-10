@@ -29,13 +29,16 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
   @override
   Widget build(BuildContext context) {
     _userController.getUsers();
+
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
         backgroundColor: kPrimary,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _userController.getUsers();
+          },
           icon: Icon(
             Icons.menu,
             color: Colors.black,
