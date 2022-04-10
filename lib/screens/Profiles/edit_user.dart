@@ -11,8 +11,12 @@ class EditUser extends StatefulWidget {
 }
 
 class _EditUserState extends State<EditUser> {
+  get user => this.user;
+
+
   @override
   Widget build(BuildContext context) {
+    // print('user $user');
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(

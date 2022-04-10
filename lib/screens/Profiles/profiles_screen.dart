@@ -101,26 +101,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
           ),
              SizedBox(height:25),
 
-          // Expanded(
-          //   child: Obx(() {
-          //     return ListView.builder(
-          //         itemCount: _userController.userList.length,
-          //         itemBuilder: (_, index) {
-          //           print(_userController.userList.length);
-          //           User reminder = _userController.userList[index];
-          //           // print(reminder.toJson());
-          //
-          //
-          //             return CategoryCard(
-          //               title: "Diet Recommendation",
-          //               svgSrc: "assets/icons/Hamburger.svg",
-          //               press: () {},
-          //             );
-          //
-          //
-          //         });
-          //   }),
-          // ),
+
           Expanded(
             child:GridView.builder(
               itemCount: _userController.userList.length,
@@ -159,44 +140,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
         ),
 
 
-             // Expanded(
-             //
-             //        child: GridView.count(
-             //          crossAxisCount: 2,
-             //          childAspectRatio: .85,
-             //          crossAxisSpacing: 20,
-             //          mainAxisSpacing: 20,
-             //          padding:const EdgeInsets.only(left:20,right:20),
-             //          children: <Widget>[
-             //            CategoryCard(
-             //              title: "Diet Recommendation",
-             //              svgSrc: "assets/icons/Hamburger.svg",
-             //              press: () {},
-             //            ),
-             //            CategoryCard(
-             //              title: "Kegel Exercises",
-             //              svgSrc: "assets/icons/female.png",
-             //              press: () {},
-             //            ),
-             //
-             //            CategoryCard(
-             //              title: "Yoga",
-             //              svgSrc: "assets/icons/yoga.svg",
-             //              press: () {},
-             //            ),
-             //            CategoryCard(
-             //              title: "Yoga",
-             //              svgSrc: "assets/icons/yoga.svg",
-             //              press: () {},
-             //            ),
-             //            CategoryCard(
-             //              title: "Yoga",
-             //              svgSrc: "assets/icons/yoga.svg",
-             //              press: () {},
-             //            ),
-             //          ],
-             //        ),
-             //      ),
+
 
           ],
       ),
@@ -204,97 +148,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
   }
 
   _showBottomSheet(BuildContext context, User reminder) {
-    // showModalBottomSheet(
-    //     backgroundColor: Colors.transparent,
-    //     barrierColor: Colors.transparent,
-    //     context: context,
-    //     builder: (_) {
-    //       return Container(
-    //         height: 250,
-    //         decoration: BoxDecoration(
-    //             color: const Color(0xFF2e3253).withOpacity(0.9),
-    //             borderRadius: const BorderRadius.only(
-    //                 topRight: Radius.circular(20),
-    //                 topLeft: Radius.circular(20))),
-    //         child: Padding(
-    //           padding: const EdgeInsets.only(left: 20, right: 20),
-    //           child: Column(
-    //             mainAxisAlignment: MainAxisAlignment.center,
-    //             children: [
-    //               reminder.isCompleted == 1
-    //                   ? Column(children: [
-    //                       _bottomSheetButton(
-    //                           label: "Delete Reminder",
-    //                           onTap: () {
-    //                             // _reminderController.delete(reminder);
-    //                             Navigator.pop(context);
-    //                           },
-    //                           clr: Colors.red[300]!,
-    //                           context: context),
-    //                       SizedBox(
-    //                         height: 10,
-    //                       ),
-    //                       _bottomSheetButton(
-    //                           label: "Close",
-    //                           onTap: () {
-    //                             Navigator.pop(context);
-    //                           },
-    //                           isClose: true,
-    //                           clr: Colors.red[300]!,
-    //                           context: context),
-    //                       SizedBox(
-    //                         height: 20,
-    //                       )
-    //                     ])
-    //                   : Column(children: [
-    //                       SizedBox(
-    //                         height: 10,
-    //                       ),
-    //                       _bottomSheetButton(
-    //                           label: "Reminder Completed",
-    //                           onTap: () {
-    //                             // _reminderController
-    //                             //     .markRemindCompleted(reminder.id!);
-    //
-    //                             Navigator.pop(context);
-    //                           },
-    //                           clr: kPrimaryColor,
-    //                           context: context),
-    //                       SizedBox(
-    //                         height: 10,
-    //                       ),
-    //                       _bottomSheetButton(
-    //                           label: "Delete Reminder",
-    //                           onTap: () {
-    //                             // _reminderController.delete(reminder);
-    //                             Navigator.pop(context);
-    //                           },
-    //                           clr: Colors.red[300]!,
-    //                           context: context),
-    //                       SizedBox(
-    //                         height: 10,
-    //                       ),
-    //                       _bottomSheetButton(
-    //                           label: "Close",
-    //                           onTap: () {
-    //                             Navigator.pop(context);
-    //                           },
-    //                           isClose: true,
-    //                           clr: Colors.red[300]!,
-    //                           context: context),
-    //                       SizedBox(
-    //                         height: 20,
-    //                       ),
-    //                     ])
-    //               // ButtonWidget(
-    //               //     backgroundcolor: Colors.red,
-    //               //     text: "Delete Reminder",
-    //               //     textColor: Colors.white)
-    //             ],
-    //           ),
-    //         ),
-    //       );
-    //     });
+
   }
 
   _bottomSheetButton(
