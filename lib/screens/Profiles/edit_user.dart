@@ -152,7 +152,7 @@ class _EditUserState extends State<EditUser> {
               SizedBox(height: 45,),
               MyButton(label:"Save",onTap: () => _validateName(user),height:45),
               SizedBox(height: 5,),
-              MyButton(label:"Delete User",onTap: () => {},color: Colors.red,height:45),
+              MyButton(label:"Delete User",onTap: () => _deleteUser(user),color: Colors.red,height:45),
             ],
           )
         )
@@ -175,8 +175,10 @@ class _EditUserState extends State<EditUser> {
 
   }
 
-  _deleteUser()async{
-
+  _deleteUser(User user)async{
+    _userController.deleteUser(user);
+    _userController.getUsers();
+    Navigator.pop(context);
   }
 
 }

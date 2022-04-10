@@ -82,4 +82,9 @@ class DBHelper {
   WHERE id=?
 ''', [name, gender ,id]);
   }
+
+  static deleteUser(User user) async {
+    return await _db!
+        .delete(_userTableName, where: 'id=?', whereArgs: [user.id]);
+  }
 }

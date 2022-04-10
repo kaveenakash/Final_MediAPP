@@ -21,13 +21,12 @@ class UserController extends GetxController{
     List<Map<String, dynamic>> users = await DBHelper.getAllUsers();
     userList.assignAll(users.map((data) => new User.fromJson(data)).toList());
   }
-  //
-  // void delete(Reminder reminder){
-  //   var val = DBHelper.delete(reminder);
-  //   getReminders();
-  //   print(val);
-  // }
-  //
+
+  void deleteUser(User user){
+    var val = DBHelper.deleteUser(user);
+    getUsers();
+  }
+
   void updateUser(String name,String gender,int id)async{
     await DBHelper.updateUser(name,gender,id);
     print('Updated user');
