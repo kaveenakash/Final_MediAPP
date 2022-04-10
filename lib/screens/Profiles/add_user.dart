@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/controllers/user_controller.dart';
 import 'package:medicine_remainder_app/models/user.dart';
+import 'package:medicine_remainder_app/screens/Profiles/profiles_screen.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
 
@@ -124,7 +125,7 @@ class _AddReminderPageState extends State<AddUserPage> {
                   _colorPallete(),
                   MyButton(
                       label: "Create User",
-                      onTap: () => _validateDate(),
+                      onTap: () => _validateName(),
                       icon: null,
                       height: 50)
                 ],
@@ -134,23 +135,14 @@ class _AddReminderPageState extends State<AddUserPage> {
     );
   }
 
-  _validateDate() {
+  _validateName() {
     if (_userNameController.text.isNotEmpty) {
       _addUserToDb();
+
       Navigator.pop(context);
 
-      // Navigator.pushAndRemoveUntil(
-      //     context,
-      //     MaterialPageRoute<void>(
-      //       builder: (BuildContext context) => const ReminderScreen(),
-      //     ),
-      //     (Route<dynamic> route) => false);
     } else if (_userNameController.text.isEmpty) {
-      // Get.snackbar("Required", "All fields are required!",
-      //     snackPosition: SnackPosition.BOTTOM,
-      //     backgroundColor: Colors.white,
-      //     colorText:kTextSecondary,
-      //     icon: Icon(Icons.warning_amber_rounded));
+
       Get.snackbar("Required", "All fields are required!",
           icon: Icon(Icons.warning_amber_rounded));
     }

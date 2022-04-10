@@ -28,8 +28,9 @@ class UserController extends GetxController{
   //   print(val);
   // }
   //
-  void updateUserName(int id)async{
-    await DBHelper.update(id);
-    // getReminders();
+  void updateUser(String name,String gender,int id)async{
+    await DBHelper.updateUser(name,gender,id);
+    print('Updated user');
+    getUsers();
   }
 }

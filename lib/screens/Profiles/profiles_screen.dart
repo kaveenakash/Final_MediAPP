@@ -25,7 +25,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
   final _userController = Get.put(UserController());
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
-  
+
   @override
   Widget build(BuildContext context) {
     _userController.getUsers();
@@ -101,7 +101,6 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
               itemBuilder: (context,index) {
                 User user = _userController.userList[index];
                 String? svg;
-                print(user.toJson());
                 if(user.gender == "Male"){
                   svg = "assets/icons/male.svg";
                 }else if(user.gender == "Female"){

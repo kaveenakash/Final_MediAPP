@@ -74,4 +74,12 @@ class DBHelper {
     print("get All Users function called");
     return await _db!.query(_userTableName);
   }
+
+  static updateUser(String name,String gender,int id) async {
+    return await _db!.rawUpdate('''
+  UPDATE users
+  SET name = ?, gender = ?
+  WHERE id=?
+''', [name, gender ,id]);
+  }
 }

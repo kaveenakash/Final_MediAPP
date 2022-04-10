@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
@@ -7,7 +9,6 @@ import 'package:medicine_remainder_app/controllers/user_controller.dart';
 
 import '../../models/user.dart';
 import '../../widgets/button.dart';
-import '../../widgets/responsive_button.dart';
 
 
 class EditUser extends StatefulWidget {
@@ -22,18 +23,18 @@ class _EditUserState extends State<EditUser> {
   final User user;
    _EditUserState({Key? key,required this.user}) : super();
 
+  final TextEditingController _userNameController = TextEditingController();
+  final UserController _userController = Get.put(UserController());
+  String _selectedRepeat = "None";
+  List<String> repeatList = ["Male","Female"];
 
 
 
   @override
   Widget build(BuildContext context) {
+    _selectedRepeat = _selectedRepeat == "None" ?user.gender.toString():_selectedRepeat;
 
-    final TextEditingController _userNameController = TextEditingController();
-    String _selectedRepeat = "None";
-    List<String> repeatList = ["Male","Female"];
-    print(user.toJson());
     String? svg;
-    print(user.toJson());
     if(user.gender == "Male"){
       svg = "assets/icons/male.svg";
     }else if(user.gender == "Female"){
@@ -41,8 +42,6 @@ class _EditUserState extends State<EditUser> {
     }else{
       svg = "assets/icons/male.svg";
     }
-
-
 
 
 
@@ -120,7 +119,7 @@ class _EditUserState extends State<EditUser> {
 
               MyInputField(
                 title: "Gender",
-                hint: user.gender.toString(),
+                hint: _selectedRepeat,
                 widget: DropdownButton(
                   icon: Icon(
                     Icons.keyboard_arrow_down,
@@ -143,13 +142,15 @@ class _EditUserState extends State<EditUser> {
                     );
                   }).toList(),
                   onChanged: (String? newValue) {
-
+                    setState(() {
+                      _selectedRepeat = newValue!;
+                    });
                   },
                 ),
               ),
 
               SizedBox(height: 45,),
-              MyButton(label:"Save",onTap: () => {},height:45),
+              MyButton(label:"Save",onTap: () => _validateName(user),height:45),
               SizedBox(height: 5,),
               MyButton(label:"Delete User",onTap: () => {},color: Colors.red,height:45),
             ],
@@ -161,5 +162,18 @@ class _EditUserState extends State<EditUser> {
 
   }
 
+  _validateName(User user) {
 
+      _updateUserFromDb(user);
+      Navigator.pop(context);
+
+
+  }
+  _updateUserFromDb(User user) async {
+     _userController.updateUser(_userNameController.text == null ?user.name.toString():_userNameController.text.toString(),_selectedRepeat,user.id!);
+    _userController.getUsers();
+    // _showMyDialog(_userNameController.text);
+
+
+  }
 }
