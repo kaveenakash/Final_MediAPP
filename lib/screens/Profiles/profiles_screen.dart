@@ -75,7 +75,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                   label: "Add Users",
                   onTap: () async {
                      Navigator.pushNamed(context,AddUserPage.routeName);
-                    _userController.getUsers();
+                      _userController.getUsers();
                   },
                   icon: Icons.add,
                   height: 25,
@@ -131,39 +131,6 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
     );
   }
 
-  _showBottomSheet(BuildContext context, User reminder) {
 
-  }
 
-  _bottomSheetButton(
-      {required String label,
-      required Function()? onTap,
-      required Color clr,
-      bool isClose = false,
-      required BuildContext context}) {
-    return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 4),
-          height: 55,
-          width: MediaQuery.of(context).size.width * 0.9,
-          decoration: BoxDecoration(
-            border: Border.all(
-                width: 2, color: isClose == true ? Colors.black : clr),
-            borderRadius: BorderRadius.circular(20),
-            color: isClose == true ? Colors.white : clr,
-          ),
-          child: Center(
-              child: Text(label,
-                  style: isClose
-                      ? TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black)
-                      : TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white))),
-        ));
-  }
 }

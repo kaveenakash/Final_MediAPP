@@ -172,8 +172,11 @@ class _EditUserState extends State<EditUser> {
   _updateUserFromDb(User user) async {
      _userController.updateUser(_userNameController.text == null ?user.name.toString():_userNameController.text.toString(),_selectedRepeat,user.id!);
     _userController.getUsers();
-    // _showMyDialog(_userNameController.text);
-
 
   }
+
+  _deleteUser()async{
+
+  }
+
 }

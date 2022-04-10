@@ -165,29 +165,7 @@ class _AddReminderPageState extends State<AddUserPage> {
     }
   }
 
-  _getTimeFromUser({required bool isStartTime}) async {
-    var pickedTime = await _showTimePicker();
-    String _formatedTime = pickedTime.format(context);
-    if (pickedTime == null) {
-      print('Time Canceled');
-    } else if (isStartTime == true) {
-      setState(() {
-        _time = _formatedTime;
-      });
-    } else if (isStartTime == false) {
-      _time = _formatedTime;
-    }
-  }
 
-  _showTimePicker() {
-    return showTimePicker(
-      initialEntryMode: TimePickerEntryMode.input,
-      context: context,
-      initialTime: TimeOfDay(
-          hour: int.parse(_time.split(":")[0]),
-          minute: int.parse(_time.split(":")[1].split(" ")[0])),
-    );
-  }
 
   _addUserToDb() async {
     int value = await _userController.AddUser(
@@ -201,7 +179,6 @@ class _AddReminderPageState extends State<AddUserPage> {
     _showMyDialog(_userNameController.text);
 
 
-    print("My id is " + "$value");
   }
   Future<void> _showMyDialog(String name) async {
 
