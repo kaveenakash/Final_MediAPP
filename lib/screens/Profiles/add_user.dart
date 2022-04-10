@@ -152,7 +152,7 @@ class _AddReminderPageState extends State<AddUserPage> {
     DateTime? _pickerDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
-        firstDate: DateTime(2015),
+        firstDate: DateTime(1990),
         lastDate: DateTime(2121));
 
     if (_pickerDate != null) {
