@@ -23,29 +23,43 @@ class ProfilesScreen extends StatefulWidget {
 
 class _ProfilesScreenState extends State<ProfilesScreen> {
   final _userController = Get.put(UserController());
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   Widget build(BuildContext context) {
-    _userController.getUsers();
 
+    _userController.getUsers();
+    var userList = <User>[].obs;
+    userList = _userController.userList;
+    
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
         backgroundColor: kPrimary,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            _userController.getUsers();
-          },
+          onPressed: () {},
           icon: Icon(
             Icons.menu,
             color: Colors.black,
             size: 30,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                userList = _userController.userList;
+              });
+            },
+            icon: Icon(
+              Icons.refresh_rounded,
+              color: Colors.black54,
+              size: 30,
+            ),
+          ),
+        ],
       ),
+
       body: Column(
         children: [
           // SizedBox(height: 25,),
@@ -92,7 +106,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
 
           Expanded(
             child:GridView.builder(
-              itemCount: _userController.userList.length,
+              itemCount: userList.length,
 
               padding:const EdgeInsets.only(left:20,right:20),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -102,7 +116,7 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
                 crossAxisSpacing: 15,
               ),
               itemBuilder: (context,index) {
-                User user = _userController.userList[index];
+                User user = userList[index];
                 String? svg;
                 if(user.gender == "Male"){
                   svg = "assets/icons/male.svg";
@@ -125,9 +139,6 @@ class _ProfilesScreenState extends State<ProfilesScreen> {
               }
             )
         ),
-
-
-
 
           ],
       ),

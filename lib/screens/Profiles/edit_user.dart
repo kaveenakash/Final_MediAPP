@@ -44,8 +44,6 @@ class _EditUserState extends State<EditUser> {
     }
 
 
-
-
     return Scaffold(
       backgroundColor: kPrimary,
       appBar: AppBar(
@@ -54,12 +52,6 @@ class _EditUserState extends State<EditUser> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
-            // Navigator.pushAndRemoveUntil(
-            //     context,
-            //     MaterialPageRoute<void>(
-            //       builder: (BuildContext context) => const ReminderScreen(),
-            //     ),
-            //     (Route<dynamic> route) => false);
           },
           icon: Icon(
             Icons.arrow_back,

@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/controllers/user_controller.dart';
 import 'package:medicine_remainder_app/models/user.dart';
-import 'package:medicine_remainder_app/screens/Profiles/profiles_screen.dart';
 import 'package:medicine_remainder_app/widgets/button.dart';
 import 'package:medicine_remainder_app/widgets/input_field.dart';
 
@@ -37,12 +36,6 @@ class _AddReminderPageState extends State<AddUserPage> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
-            // Navigator.pushAndRemoveUntil(
-            //     context,
-            //     MaterialPageRoute<void>(
-            //       builder: (BuildContext context) => const ReminderScreen(),
-            //     ),
-            //     (Route<dynamic> route) => false);
           },
           icon: Icon(
             Icons.arrow_back,

@@ -62,6 +62,7 @@ class DBHelper {
 
 
 
+
   //User CRUD Operations
 
   static Future<int> insertUser(User? user) async {
