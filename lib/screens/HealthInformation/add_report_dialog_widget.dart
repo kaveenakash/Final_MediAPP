@@ -51,7 +51,7 @@ class _AddReportDialogWidgetState extends State<AddReportDialogWidget> {
           title: title,
           description: description
         ));
-    // _reminderController.getReminders();
+    _noteController.getNotes();
     print("My id is " + "$value");
   }
 }

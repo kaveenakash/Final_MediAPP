@@ -77,6 +77,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
               setState(() {
                 noteList = _noteController.noteList;
               });
+
             },
             icon: Icon(
               Icons.refresh_rounded,
@@ -113,11 +114,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
                       title: note.title.toString(),
                       description:note.description.toString(),
                       svgSrc: "assets/icons/male.svg",
-                      delete:(){
-                        print("Hello");
-                          _noteController.delete(note);
-                          _noteController.getNotes();
-                      },
+                     note:note,
                       press: () {
                         // Navigator.push(
                         //   context,
