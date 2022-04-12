@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:medicine_remainder_app/constants.dart';
+import 'package:medicine_remainder_app/screens/HealthInformation/update_report_dialog_widget.dart';
 
 import '../controllers/note_controller.dart';
 import '../models/Note.dart';
@@ -69,7 +70,7 @@ class NoteCard extends StatelessWidget {
             ],)),
                       SizedBox(width:40),
                         Column(children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                          IconButton(onPressed: () => showDialog(context: context,barrierDismissible: true, builder: (BuildContext context) { return UpdateReportDialogWidget(note: note!); }), icon: Icon(Icons.edit)),
                           IconButton(onPressed: () =>  {_noteController.delete(note!)}, icon: Icon(Icons.delete),color:Colors.red),
 
 

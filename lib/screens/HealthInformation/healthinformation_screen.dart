@@ -113,7 +113,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
                     return SizedBox(height:15,child:NoteCard(
                       title: note.title.toString(),
                       description:note.description.toString(),
-                      svgSrc: "assets/icons/male.svg",
+                      svgSrc: "assets/icons/note.svg",
                      note:note,
                       press: () {
                         // Navigator.push(

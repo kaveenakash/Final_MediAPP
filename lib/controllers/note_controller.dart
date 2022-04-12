@@ -28,9 +28,9 @@ class NoteController extends GetxController{
     getNotes();
     print(val);
   }
-  //
-  // void markRemindCompleted(int id)async{
-  //   await DBHelper.update(id);
-  //   getReminders();
-  // }
+  void updateNote(String title,String description,int id)async{
+    await DBHelper.updateNote(title,description,id);
+    print('Updated Note');
+    getNotes();
+  }
 }

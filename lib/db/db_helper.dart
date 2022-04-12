@@ -9,7 +9,7 @@ class DBHelper {
   static final int _version = 1;
   static final String _reminderTableName = "reminders";
   static final String _userTableName = "users";
-  static final String _noteTableName = "Notes";
+  static final String _noteTableName = "notes";
 
 
 
@@ -111,5 +111,13 @@ class DBHelper {
   static deleteNote(Note note) async {
     return await _db!
         .delete(_noteTableName, where: 'id=?', whereArgs: [note.id]);
+  }
+
+  static updateNote(String title,String description,int id) async {
+    return await _db!.rawUpdate('''
+  UPDATE notes
+  SET title = ?, description = ?
+  WHERE id=?
+''', [title, description ,id]);
   }
 }
