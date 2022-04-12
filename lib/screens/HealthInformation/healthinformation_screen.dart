@@ -101,7 +101,7 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
                   padding:const EdgeInsets.only(left:20,right:20),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 1,
-                    mainAxisExtent: 120,
+                    mainAxisExtent: 140,
                     childAspectRatio: 0.85,
                     mainAxisSpacing: 15,
                     crossAxisSpacing: 15,
@@ -113,6 +113,11 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
                       title: note.title.toString(),
                       description:note.description.toString(),
                       svgSrc: "assets/icons/male.svg",
+                      delete:(){
+                        print("Hello");
+                          _noteController.delete(note);
+                          _noteController.getNotes();
+                      },
                       press: () {
                         // Navigator.push(
                         //   context,

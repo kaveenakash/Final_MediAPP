@@ -7,12 +7,14 @@ class NoteCard extends StatelessWidget {
   final String title;
   final String description;
   final Function()? press;
+  final Function()? delete;
   const NoteCard({
     Key? key,
     required this.svgSrc,
     required this.title,
     required this.description,
     required this.press,
+    required this.delete
   }) : super(key: key);
 
   @override
@@ -46,18 +48,25 @@ class NoteCard extends StatelessWidget {
                       children: [
                         SizedBox(child:SvgPicture.asset(svgSrc),height:65,width:85) ,
                         SizedBox(width:10),
+                        SizedBox(width:150, child:Column(children: [
+                          Text(
+                          title,
+                          textAlign: TextAlign.center,
+
+                        ),
+            SizedBox(height:15),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+
+            ),
+            ],)),
+                      SizedBox(width:40),
                         Column(children: [
-                          Text(
-                            title,
-                            textAlign: TextAlign.center,
+                          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                          IconButton(onPressed: () => {delete}, icon: Icon(Icons.delete),color:Colors.red),
 
-                          ),
-                          SizedBox(height:15),
-                          Text(
-                            description,
-                            textAlign: TextAlign.center,
 
-                          ),
                         ],)
 
                       ],

@@ -107,4 +107,9 @@ class DBHelper {
     print("get All notes function called");
     return await _db!.query(_noteTableName);
   }
+
+  static deleteNote(Note note) async {
+    return await _db!
+        .delete(_noteTableName, where: 'id=?', whereArgs: [note.id]);
+  }
 }

@@ -23,11 +23,11 @@ class NoteController extends GetxController{
     noteList.assignAll(notes.map((data) => new Note.fromJson(data)).toList());
   }
   //
-  // void delete(Reminder reminder){
-  //   var val = DBHelper.delete(reminder);
-  //   getReminders();
-  //   print(val);
-  // }
+  void delete(Note note){
+    var val = DBHelper.deleteNote(note);
+    getNotes();
+    print(val);
+  }
   //
   // void markRemindCompleted(int id)async{
   //   await DBHelper.update(id);
