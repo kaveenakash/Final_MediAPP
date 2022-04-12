@@ -18,10 +18,10 @@ class NoteController extends GetxController{
     return await DBHelper.insertNote(note);
   }
 
-  // void getReminders() async{
-  //   List<Map<String, dynamic>> reminders = await DBHelper.query();
-  //   noteList.assignAll(reminders.map((data) => new Reminder.fromJson(data)).toList());
-  // }
+  void getNotes() async{
+    List<Map<String, dynamic>> notes = await DBHelper.getAllNotes();
+    noteList.assignAll(notes.map((data) => new Note.fromJson(data)).toList());
+  }
   //
   // void delete(Reminder reminder){
   //   var val = DBHelper.delete(reminder);

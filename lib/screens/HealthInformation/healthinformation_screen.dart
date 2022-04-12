@@ -8,8 +8,13 @@
 // import 'package:filesize/filesize.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:medicine_remainder_app/constants.dart';
 import 'package:medicine_remainder_app/screens/HealthInformation/category.dart';
+import 'package:medicine_remainder_app/widgets/category_card.dart';
 // import 'package:percent_indicator/circular_percent_indicator.dart';
 
 // // binding
@@ -27,6 +32,12 @@ import 'package:medicine_remainder_app/screens/HealthInformation/category.dart';
 // part '../components/header.dart';
 // part '../components/recent.dart';
 // part '../components/storage_chart.dart';
+import '../../controllers/note_controller.dart';
+import '../../controllers/user_controller.dart';
+import '../../models/Note.dart';
+import '../../models/user.dart';
+import '../../widgets/note_card.dart';
+import '../Profiles/edit_user.dart';
 import './header.dart';
 import 'add_report_dialog_widget.dart';
 class HealthInformationScreen extends StatefulWidget {
@@ -38,84 +49,84 @@ class HealthInformationScreen extends StatefulWidget {
 }
 
 class _HealthInformationScreenState extends State<HealthInformationScreen>{
+  final _noteController = Get.put(NoteController());
+  final _userController = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     var items = ["Item 1", "Item2"];
+    _noteController.getNotes();
+    _userController.getUsers();
+    var noteList = <Note>[].obs;
+    noteList = _noteController.noteList;
     return Scaffold(
       backgroundColor: kPrimary,
-      body: SafeArea(
-        child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [
-            SliverFillRemaining(
-              child: Column(children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: TopBar(),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: _StorageChart(usage: controller.usage),
-                // ),
-                Padding(
-                  padding: const EdgeInsets.only(left:20.0,top:20,bottom: 20),
-                  child: Category(),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: _Recent(
-                //     // data: controller.recent,
-                //   ),     
-                // ),
-
-                Container(
-                  margin: EdgeInsets.only(left: 15,right: 15),
-                  padding: EdgeInsets.only(left:10),
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(13),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 17),
-                        blurRadius: 23,
-                        spreadRadius: -13,
-                        color: kShadowColor,
-                      ),
-                    ],
-                  ),
-
-                  child: Row(
-                    children: <Widget>[
-                      SizedBox(height:50,width:50,child:  SvgPicture.asset(
-                        "assets/icons/folder.svg",
-                      ),),
-                      // Image.asset("bluefolder_ccexpress",width:10,height:10),
-
-                      SizedBox(width: 20),
-
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "Blood Report",
-                            ),
-                            Text("Mother last month blood report")
-                          ],
-                        ),
-                      ),
-                      SizedBox(width:50,child:Column(children:[IconButton(icon:Icon(Icons.delete),color:Colors.red, onPressed: () {  },),IconButton(icon:Icon(Icons.download),color:Colors.blue, onPressed: () {  },),]) ,)
-                    ],
-                  ),
-                ),
-
-              ]),
-              hasScrollBody: false,
-            )
-          ],
+      appBar: AppBar(
+        backgroundColor: kPrimary,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.menu,
+            color: Colors.black,
+            size: 30,
+          ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                noteList = _noteController.noteList;
+              });
+            },
+            icon: Icon(
+              Icons.refresh_rounded,
+              color: Colors.black54,
+              size: 30,
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+
+          // SizedBox(height: 25,),
+
+          // SizedBox(height:25),
+          Category(),
+
+          Expanded(
+              child:GridView.builder(
+                  itemCount: _noteController.noteList.length,
+
+                  padding:const EdgeInsets.only(left:20,right:20),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 1,
+                    mainAxisExtent: 120,
+                    childAspectRatio: 0.85,
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15,
+                  ),
+                  itemBuilder: (context,index) {
+                    Note note = noteList[index];
+
+                    return SizedBox(height:15,child:NoteCard(
+                      title: note.title.toString(),
+                      description:note.description.toString(),
+                      svgSrc: "assets/icons/male.svg",
+                      press: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => EditUser(user:user),
+                        //   ),
+                        // );
+                        },
+                    ));
+                  }
+              )
+          ),
+
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog(context: context,barrierDismissible: true, builder: (BuildContext context) { return AddReportDialogWidget(); }),

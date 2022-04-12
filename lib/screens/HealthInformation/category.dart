@@ -43,8 +43,10 @@ class Category extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      padding:const EdgeInsets.only(left:20,right:20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+
         children: [
           HeaderText("Medicine Notes"),
           SizedBox(height: 20.0),
