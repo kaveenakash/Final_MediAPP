@@ -29,6 +29,8 @@ dependencies:
   flutter_native_timezone:
   sqflite:
   flutter_staggered_animations:
+  flutter_slidable:
+  provider:
 
 dev_dependencies:
   flutter_test:

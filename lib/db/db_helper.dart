@@ -1,5 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
+import '../models/Note.dart';
 import '../models/reminder.dart';
 import '../models/user.dart';
 
@@ -8,6 +9,7 @@ class DBHelper {
   static final int _version = 1;
   static final String _reminderTableName = "reminders";
   static final String _userTableName = "users";
+  static final String _noteTableName = "Notes";
 
 
 
@@ -30,8 +32,9 @@ class DBHelper {
 
   //Table Creation
   static void _createDb(Database db) async{
-    print("creating a new one");
+    print("creating tables");
     db.execute('CREATE TABLE $_userTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING,date STRING, gender STRING, color INTEGER)');
+    db.execute('CREATE TABLE $_noteTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING,description STRING)');
     db.execute('CREATE TABLE $_reminderTableName(id INTEGER PRIMARY KEY AUTOINCREMENT, title STRING, note TEXT, date STRING,time STRING,remind INTEGER, repeat STRING,color INTEGER,isCompleted INTEGER,userId INTEGER ,FOREIGN KEY(userId) REFERENCES $_userTableName(id))');
 
   }
@@ -89,5 +92,19 @@ class DBHelper {
   static deleteUser(User user) async {
     return await _db!
         .delete(_userTableName, where: 'id=?', whereArgs: [user.id]);
+  }
+
+
+
+  //note CRUD operations
+  static Future<int> insertNote(Note? note) async {
+    print("insert note function called");
+    return await _db?.insert(_noteTableName, note!.toJson()) ?? 1;
+    // return 1;
+  }
+
+  static Future<List<Map<String, dynamic>>> getAllNotes() async {
+    print("get All notes function called");
+    return await _db!.query(_noteTableName);
   }
 }

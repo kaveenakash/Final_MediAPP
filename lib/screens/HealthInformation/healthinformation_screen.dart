@@ -28,6 +28,7 @@ import 'package:medicine_remainder_app/screens/HealthInformation/category.dart';
 // part '../components/recent.dart';
 // part '../components/storage_chart.dart';
 import './header.dart';
+import 'add_report_dialog_widget.dart';
 class HealthInformationScreen extends StatefulWidget {
   const HealthInformationScreen({Key? key}) : super(key: key);
 
@@ -115,6 +116,11 @@ class _HealthInformationScreenState extends State<HealthInformationScreen>{
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => showDialog(context: context,barrierDismissible: true, builder: (BuildContext context) { return AddReportDialogWidget(); }),
+        child:Icon(Icons.add),
+        backgroundColor: kPrimaryColor,
       ),
     );
   }

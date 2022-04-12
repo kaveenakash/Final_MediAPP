@@ -8,31 +8,31 @@ class Category extends StatelessWidget {
 
   final buttons = [
     CustomButton(
-      icon: Icons.audio_file,
+      icon: Icons.note,
       color: Colors.green,
       label: "Physicals",
       onPressed: () {},
     ),
     CustomButton(
-      icon: Icons.image,
+      icon: Icons.note,
       color: Colors.lightBlue,
       label: "Consulatations",
       onPressed: () {},
     ),
     CustomButton(
-      icon: Icons.video_collection,
+      icon: Icons.note,
       color: Colors.pinkAccent,
-      label: "Operative",
+      label: "Medicine",
       onPressed: () {},
     ),
     CustomButton(
-      icon: Icons.audio_file,
+      icon: Icons.note,
       color: Colors.orangeAccent,
       label: "Pathology",
       onPressed: () {},
     ),
     CustomButton(
-      icon: Icons.audio_file,
+      icon: Icons.note,
       color: Colors.orangeAccent,
       label: "Discharge",
       onPressed: () {},
@@ -46,7 +46,7 @@ class Category extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderText("Reports Categories"),
+          HeaderText("Medicine Notes"),
           SizedBox(height: 20.0),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
